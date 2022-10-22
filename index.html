@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenimiento de Alumnos</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<form name="index.html" action="mantenimiento.php" method="post">
+<table border="1">
+
+<tr>
+<td colspan="8"><label>Mantenimiento de Alumnos</label></td>
+</tr>
+
+<tr><td colspan="8"><label>Registrar Alumno </label></td></tr>
+<tr>
+	<td><label>Ci</label></td><td><input type="number" value="" maxlength="7"  name="txtCi"></td>
+	<td><label>Nombres</label></td><td><input type="text" value="" maxlength="30" name="txtNombres" maxlength="30" size="10"></td>
+</tr>
+<tr>
+	<td><label>Apellidos</label></td><td><input type="text" value="" maxlength="50" name="txtApellellidos"></td>
+	<td><label>Curso</label></td><td><input type="number" value="" maxlength="9"  name="txtCurso"></td>
+	</tr>
+	<tr>
+		<td><label>Seccion</label></td><td><input type="text" value="" maxlength="7" name="txtSeccion"></td>
+		<td><label>Turno</label></td><td><input type="text" value="" maxlength="10" name="txtTurno" maxlength="10" size="10"></td>
+	</tr>
+	<tr>
+		<td><label>Padres o Encargados</label></td><td><input type="text" value="" maxlength="50" name="txtPadres o Encargados"></td>
+		<td><label>Telefono</label></td><td><input type="number" value="" maxlength="15"  name="txtTelefono"></td>
+		</tr>
+
+<tr><td colspan="8" align="center">
+<input type="submit" value="Nuevo" name="limpiardatos" >
+<input type="submit" value="Grabar" name="grabardatos" >
+<input type="submit" value="Modificar" name="modificardatos" >
+<input type="submit" value="Eliminar" name="eliminardatos">
+
+
+</td>
+</tr>
+
+<tr><td colspan="4"><label>Listado de Alumnos </label></td></tr>
+
+<tr><td><label>Ci</label></td>
+	<td><label>Nombres</label></td>
+	<td><label>Apellidos</label></td>
+	<td><label>Curso</label></td>
+	<td><label>Seccion</label></td>
+	<td><label>Turno</label></td>
+	<td><label>Padres o Encargados</label></td>
+	<td><label>Telefono</label></td>
+</tr>
+
+<?php 
+$sql="SELECT * FROM test";
+$result=mysqli_query($conn,$sql);
+
+while($mostrar=mysqli_fetch_array($result))
+{
+?>
+<tr> <td><?php echo $mostrar['Ci'] ?>
+	<td><?php echo $mostrar['Nombres'] ?>
+	<td><?php echo $mostrar['Apellidos'] ?>
+	<td><?php echo $mostrar['Curso'] ?>
+    <td><?php echo $mostrar['Seccion'] ?>
+	<td><?php echo $mostrar['Turno'] ?>
+    <td><?php echo $mostrar['Padres o Encargados'] ?>
+	<td><?php echo $mostrar['Telefono'] ?>
+
+</tr>
+<?php
+}
+
+?>
+
+</table>
+</form>
+</body>
+</html>
